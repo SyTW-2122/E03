@@ -1,12 +1,4 @@
-<!-- <div>
-  <div class="p-d-flex">
-    <div class="p-mr-2">
-      <a class="login" [routerLink]="['login']">Sing in</a>
-    </div>
-    <div class="p-mr-2">
-      <a class="register" [routerLink]="['register']">Sing up</a>
-    </div>
-  </div>
-</div> -->
-
-<p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
+<div class="card">
+  <p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
+  <p-avatar icon="pi pi-user" styleClass="p-mr-2" size="large" [style]="{'background-color':'#ffe082', 'color': '#000000'}" shape="circle"></p-avatar>
+</div>

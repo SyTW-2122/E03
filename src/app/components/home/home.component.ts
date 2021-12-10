@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {MenuItem} from 'primeng/api';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-home',
@@ -12,18 +12,20 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   items: MenuItem[];
-
   activeItem: MenuItem;
 
-  ngOnInit() {
-      this.items = [
-          {label: 'Home', icon: 'pi pi-fw pi-home'},
-          {label: 'Calendar', icon: 'pi pi-fw pi-calendar'},
-          {label: 'Edit', icon: 'pi pi-fw pi-pencil'},
-          {label: 'Documentation', icon: 'pi pi-fw pi-file'},
-          {label: 'Settings', icon: 'pi pi-fw pi-cog'}
-      ];
+  items_breadcrumb: MenuItem[];
+  home: MenuItem;
 
-      this.activeItem = this.items[0];
+  ngOnInit() {
+    this.items = [
+      {label: 'Home', icon: 'pi pi-fw pi-home', routerLink: ['']},
+      {label: 'Login', icon: 'pi pi-sign-in', routerLink: ['login']},
+      {label: 'Register', icon: 'pi pi-sign-out', routerLink: ['register']}
+    ];
+
+    this.activeItem = this.items[0];
+
+    this.home = {icon: 'pi pi-home'};
   }
 }

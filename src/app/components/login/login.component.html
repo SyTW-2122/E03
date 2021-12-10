@@ -4,15 +4,18 @@
   <div class="card">
     <div class="p-field">
       <label for="nickname" class="p-sr-only">Nickname</label>
-      <input id="nickname" type="text" pInputText placeholder="Nickname"> 
+      <input id="nickname" type="text" pInputText [(ngModel)]="value1" placeholder="Nickname"> 
+      <span class="p-ml-2">{{value1}}</span>
     </div> 
-
+    
     <div class="p-field">
       <label for="password" class="p-sr-only">Password</label>
-      <input id="password" type="text" pInputText placeholder="Password"> 
-    </div>
+      <input id="password" type="password" pInputText [(ngModel)]="value2" placeholder="Password"> 
+      <span class="p-ml-2">{{value2}}</span>
+    </div> 
 
-    <button id="button-login" type="button">Login</button>
+    <button pButton pRipple type="button" label="Login" class="p-button-rounded"></button>
+    <p>¿Olvidaste tu contraseña?<a class="change"> Click here</a></p>
     <p>You do not have an account? <a class="register" [routerLink]="['./../register']">Sign up</a></p>
   </div>
 </div>

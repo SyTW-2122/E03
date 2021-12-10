@@ -14,8 +14,11 @@ import { RegisterComponent } from './components/register/register.component';
 
 // Modulo PrimeNG
 import { PrimeNgModule } from './prime-ng/prime-ng.module';
-
 import { TabMenuModule } from 'primeng/tabmenu';
+import { AvatarModule } from "primeng/avatar";
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { InputTextModule } from 'primeng/inputtext';
+import {ButtonModule} from 'primeng/button';
 
 
 @NgModule({
@@ -33,7 +36,11 @@ import { TabMenuModule } from 'primeng/tabmenu';
     BrowserAnimationsModule,
     FormsModule,
     TabMenuModule,
-    PrimeNgModule
+    PrimeNgModule,
+    AvatarModule,
+    BreadcrumbModule,
+    InputTextModule,
+    ButtonModule
   ],
   exports: [
     LoginComponent,

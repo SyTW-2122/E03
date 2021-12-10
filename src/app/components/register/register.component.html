@@ -1,35 +1,37 @@
 <h2 id="name-register">Register</h2>
-<a class="back" [routerLink]="['./../login']"><i class="pi pi-times"></i></a>
 <div id="container-register">
+  <a class="back" [routerLink]="['./..']"><i class="pi pi-times"></i></a>
   <div class="card">
-    <div class="p-field p-grid">
-      <label for="name" class="p-col-fixed">Name</label>
-      <div class="p-col">
-        <input id="name" type="text" pInputText> 
-      </div>
+    <div class="p-field">
+      <label for="name">Name</label>
+      <input id="name" type="text" aria-describedby="name-help" pInputText [(ngModel)]="value1" placeholder="Name"/>
+      <span class="p-ml-2">{{value1}}</span>
+    </div> 
+
+    <div class="p-field">
+      <label for="nickname">Nickname</label>
+      <input id="nickname" type="text" aria-describedby="nickname-help" pInputText [(ngModel)]="value2" placeholder="Nickname"/>
+      <span class="p-ml-2">{{value2}}</span>
     </div>
 
-    <div class="p-field p-grid">
-      <label for="nickname" class="p-col-fixed" >Nickname</label>
-      <div class="p-col">
-        <input id="nickname" type="text" pInputText> 
-      </div>
+    <div class="p-field">
+      <label for="email">Email</label>
+      <input id="email" type="text" aria-describedby="email-help" pInputText [(ngModel)]="value3" placeholder="Email"/>
+      <span class="p-ml-2">{{value3}}</span>
+    </div> 
+    
+    <div class="p-field">
+      <label for="password">Password</label>
+      <input id="password" type="password" aria-describedby="password-help" pInputText [(ngModel)]="value4" placeholder="Password"/>
+      <span class="p-ml-2">{{value4}}</span>
+    </div> 
+
+    <div class="p-field">
+      <label for="password2">Repeat password</label>
+      <input id="password2" type="password" aria-describedby="password2-help" pInputText [(ngModel)]="value5" placeholder="Password"/>
+      <span class="p-ml-2">{{value5}}</span>
     </div>
 
-    <div class="p-field p-grid">
-      <label for="email" class="p-col-fixed" >Email</label>
-      <div class="p-col">
-        <input id="email" type="text" pInputText> 
-      </div>
-    </div>
-
-    <div class="p-field p-grid">
-      <label for="password" class="p-col-fixed" >Password</label>
-      <div class="p-col">
-        <input id="password" type="password" pInputText> 
-      </div>
-    </div>
-
-    <button id="button-register" type="button">Register</button>
+    <button pButton pRipple type="button" label="Register" class="p-button-rounded"></button>
   </div>
 </div>
