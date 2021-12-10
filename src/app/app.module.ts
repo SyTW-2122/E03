@@ -15,6 +15,8 @@ import { RegisterComponent } from './components/register/register.component';
 // Modulo PrimeNG
 import { PrimeNgModule } from './prime-ng/prime-ng.module';
 
+import { TabMenuModule } from 'primeng/tabmenu';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { PrimeNgModule } from './prime-ng/prime-ng.module';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    TabMenuModule,
     PrimeNgModule
   ],
   exports: [

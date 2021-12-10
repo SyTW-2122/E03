@@ -1,15 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
-body{
+body,html {
+    margin: 0;
+    padding: 0;
     background-color: rgb(236, 209, 209);
 }
 
-.container{
+.container {
     height: 130px;
     width: auto;
     background-color: rgb(250, 75, 75);
 }
 
-h1{
+h1 {
     position: relative;
     top: 40px;
     left: 30px;
