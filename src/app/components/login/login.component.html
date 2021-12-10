@@ -1,0 +1,18 @@
+<h2 id="name-login">Login</h2>
+<div id="container-login">
+  <a class="back" [routerLink]="['./..']"><i class="pi pi-times"></i></a>
+  <div class="card">
+    <div class="p-field">
+      <label for="nickname" class="p-sr-only">Nickname</label>
+      <input id="nickname" type="text" pInputText placeholder="Nickname"> 
+    </div> 
+
+    <div class="p-field">
+      <label for="password" class="p-sr-only">Password</label>
+      <input id="password" type="text" pInputText placeholder="Password"> 
+    </div>
+
+    <button id="button-login" type="button">Login</button>
+    <p>You do not have an account? <a class="register" [routerLink]="['./../register']">Sign up</a></p>
+  </div>
+</div>
