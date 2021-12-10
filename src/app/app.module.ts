@@ -29,7 +29,8 @@ import { PrimeNgModule } from './prime-ng/prime-ng.module';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    PrimeNgModule
   ],
   exports: [
     LoginComponent,
