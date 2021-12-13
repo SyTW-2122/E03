@@ -18,7 +18,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { AvatarModule } from "primeng/avatar";
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { InputTextModule } from 'primeng/inputtext';
-import {ButtonModule} from 'primeng/button';
+import { ButtonModule} from 'primeng/button';
 
 
 @NgModule({

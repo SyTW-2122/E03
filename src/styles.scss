@@ -1,17 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+*{margin:0; padding:0;}
+
 body {
-    margin: 0;
     background-color: #fde28f80;
+    font-family: var( --font-family );
+
 }
 
 .container {
-    height: 130px;
+    height: 100px;
     width: auto;
-    background-color: #fdbf05ad;
+    background-color: var( --primary-color );
+}
+
+.text-layout {
+    color: var( --text-color );
 }
 
 h1 {
     position: relative;
-    top: 40px;
+    top: 25px;
     left: 30px;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.back{
+    position: relative;
+    top: -10px; 
+    left: 320px;
+    color: var( --secondary-color );
+
+    .pi {
+        font-size: 2em !important;
+    }
 }
