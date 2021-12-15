@@ -4,6 +4,8 @@ import {Observable, throwError} from 'rxjs';
 import {User} from '../models/user.model';
 import {catchError, map} from 'rxjs/operators';
 
+const API_URL = 'http://localhost:4200/api/test/';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,9 +20,8 @@ export class UserService {
     );
   }
 
-  public getAllUsers(): Observable<User[]> {
-    return this.httpService.get<User[]>(`http://localhost:3000/users`).pipe(
-      map(data => data.map(data => new User().deserialize(data)))
-    );
+  public getPublicContent(): Observable<any> {
+    return this.httpService.get(API_URL + 'all', { responseType: 'text' });
   }
 }
+
