@@ -38,15 +38,29 @@
     padding: 10px;
 }
 
-button{
-    position: relative;
-    left: 55px;
-    margin: 5px;
-}
 p{
     padding: 5px;
 }
 
-.register, .change{
+.text{
+    position: relative;
+    top: -30px;
+}
+
+.text_pass{
+    position: relative;
+    top: -65px;
+}
+
+.btn, .btn-primary, .btn-block{
+    position: relative;
+    top: -10px;
+    left: -5px;
+    margin: 5px;
+    background-color: var( --primary-color ) !important;
+    border-color: var( --primary-color ) !important;
+}
+
+.register, .change, .password_forget{
     color: #e0a902;
 }
