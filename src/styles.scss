@@ -1,16 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-    background-color: rgb(236, 209, 209);
+* {  
+    margin: 0; 
+    padding: 0;
+} 
+
+body {
+    background-color: #fde28f80 !important;
+    font-family: var( --font-family );
 }
 
-.container{
-    height: 130px;
+.tittle_container {
+    height: 100px;
     width: auto;
-    background-color: rgb(250, 75, 75);
+    background-color: var( --primary-color );
 }
 
-h1{
+.text-layout {
+    color: var( --text-color );
+}
+
+h1 {
     position: relative;
-    top: 40px;
+    top: 25px;
     left: 30px;
+}
+
+.card {
+    border-radius: 10px;
+    position: relative;
+    left: 600px;
+}
+
+.back{
+    position: relative;
+    top: -10px; 
+    left: 900px;
+    color: var( --secondary-color );
+
+    .pi {
+        font-size: 2em !important;
+    }
 }

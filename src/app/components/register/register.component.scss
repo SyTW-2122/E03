@@ -5,33 +5,45 @@
     justify-content: center;
 }
 
-/* .back{
-    position: relative;
-    top: -75px; 
-    left: 850px;
-} */
-
 #name-register{
-    position: relative;
-    top: 15px; 
-    left: 720px;
+    margin-top: 20px;
+    height: auto;
+    width: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .card{
-    height: 340px;
-    width: 205px;
-    border: 2px solid rgb(0, 0, 0);
+    height: 590px;
+    width: 260px;
+    border: 3px solid rgb(0, 0, 0);
+    background-color: #0000002a;
     padding: 10px;
-    margin: 10px;
+    margin: 20px;
 }
 
-.p-field{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: -35px;
+.sizes {
+    .p-inputtext {
+        display: block;
+        margin-bottom: .5rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
 }
 
-#button-register{
-    margin-top: 20px;
-    margin-left: 50px;
+.p-field * {
+    display: block;
+    position: relative;
+    left: 20px;
+    padding: 5px;
+}
+
+.btn, .btn-primary, .btn-block{
+    position: relative;
+    left: -5px;
+    margin: 5px;
+    background-color: var( --primary-color ) !important;
+    border-color: var( --primary-color ) !important;
 }

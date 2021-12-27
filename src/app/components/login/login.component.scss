@@ -5,33 +5,62 @@
     justify-content: center;
 }
 
-/* .back{
-    position: relative;
-    top: -35px; 
-    left: 250px;
-} */
-
 #name-login{
-    position: relative;
-    top: 25px; 
-    left: 725px;
+    margin-top: 20px;
+    height: auto;
+    width: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .card{
-    height: 250px;
-    width: 200px;
-    border: 2px solid rgb(0, 0, 0);
+    height: 350px;
+    width: 230px;
+    border: 3px solid rgb(0, 0, 0);
+    background-color: #0000002a;
     padding: 10px;
-    margin: 10px;
+    margin: 20px;
 }
 
-.p-field{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: -35px;
+.sizes {
+    .p-inputtext {
+        display: block;
+        margin-bottom: .5rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
 }
 
-#button-login{
-    margin-top: 20px;
-    margin-left: 65px;
+.p-field * {
+    display: block;
+    padding: 10px;
+}
+
+p{
+    padding: 5px;
+}
+
+.text{
+    position: relative;
+    top: -30px;
+}
+
+.text_pass{
+    position: relative;
+    top: -65px;
+}
+
+.btn, .btn-primary, .btn-block{
+    position: relative;
+    top: -10px;
+    left: -5px;
+    margin: 5px;
+    background-color: var( --primary-color ) !important;
+    border-color: var( --primary-color ) !important;
+}
+
+.register, .change, .password_forget{
+    color: #e0a902;
 }
