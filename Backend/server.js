@@ -57,7 +57,6 @@ function initial() {
         if (err) {
           console.log("error", err);
         }
-
         console.log("added 'admin' to roles collection");
       });
     }
@@ -68,6 +67,10 @@ function initial() {
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to cinemart." });
 });
+
+// routes
+require('./app/routes/auth.routes')(app);
+require('./app/routes/user.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

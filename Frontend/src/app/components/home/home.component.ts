@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
       {label: 'Login', icon: 'pi pi-sign-in', routerLink: ['login']},
       {label: 'Register', icon: 'pi pi-sign-out', routerLink: ['register']}
     ];
+    
     this.userService.getPublicContent().subscribe(
       data => {
         this.content = data;
