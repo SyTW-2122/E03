@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MenuItem } from 'primeng/api';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +10,10 @@ import { MenuItem } from 'primeng/api';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   items: MenuItem[];
-  activeItem: MenuItem;
-
-  items_breadcrumb: MenuItem[];
-  home: MenuItem;
+  content?: string;
 
   ngOnInit() {
     this.items = [
@@ -23,9 +21,13 @@ export class HomeComponent implements OnInit {
       {label: 'Login', icon: 'pi pi-sign-in', routerLink: ['login']},
       {label: 'Register', icon: 'pi pi-sign-out', routerLink: ['register']}
     ];
-
-    this.activeItem = this.items[0];
-
-    this.home = {icon: 'pi pi-home'};
+    this.userService.getPublicContent().subscribe(
+      data => {
+        this.content = data;
+      },
+      err => {
+        this.content = JSON.parse(err.error).message;
+      }
+    )
   }
 }
