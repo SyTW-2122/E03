@@ -24,6 +24,9 @@ import { ButtonModule} from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { PrimeNgModule } from './prime-ng/prime-ng.module';
 import { TabMenuModule } from 'primeng/tabmenu';
+import { MoviesComponent } from './components/movies/movies.component';
+import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 
 
@@ -39,7 +42,10 @@ import { TabMenuModule } from 'primeng/tabmenu';
     HomeComponent,
     LoginComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    MoviesComponent,
+    ComingSoonComponent,
+    MenuComponent
   ],
   imports: [
     AppRoutingModule,

@@ -1,1 +1,43 @@
-
+.carousel {
+  max-width:950px;
+  margin:0 auto;
+  figure {
+    background-size: cover;
+    position: relative;
+    &::before{
+      content:'';
+      position: absolute;
+      top:0;
+      left: 0;
+      right: 0;
+      bottom:0;
+      background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.5));
+      opacity: 0;
+      will-change:opacity;
+      transition: opacity 0.5ms ease-in-out;
+    }
+  }
+  &-inner {
+    border-radius: 3px;
+  }
+  .carousel-control {
+    fill: #fff;
+    background-image: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(0);
+    will-change:transform;
+    transition:transform 0.5ms ease-in;
+    opacity: 1;
+    &.left{
+      transform: translate(-100%);
+    }
+    &.right{
+      transform: translate(100%);
+    }
+    svg{
+      height: 64px;
+    }
+  }
+}

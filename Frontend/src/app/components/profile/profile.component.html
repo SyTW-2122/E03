@@ -1,7 +1,8 @@
 <div class="container" *ngIf="currentUser; else loggedOut">
   <header class="jumbotron">
+    <h1>Profile</h1>
     <h3>
-      <strong>{{ currentUser.username }}</strong> Profile
+      <strong>{{ currentUser.username }}</strong>
     </h3>
   </header>
   <p>
@@ -15,9 +16,7 @@
   </p>
   <strong>Roles:</strong>
   <ul>
-    <li *ngFor="let role of currentUser.roles">
-      {{ role }}
-    </li>
+    <li *ngFor="let role of currentUser.roles">{{ role }} </li>
   </ul>
 </div>
   
