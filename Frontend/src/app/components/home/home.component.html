@@ -1,3 +1,4 @@
+<!-- Carousel -->
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -15,4 +16,53 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
+</div>
+
+<!-- ejemplos peliculas -->
+<div class="container">
+  <div class="card-group" id="gruoup1">
+    <div class="card">
+      <img src="https://es.web.img3.acsta.net/pictures/22/03/16/12/44/0138242.jpg" class="card-img-top" alt="..." width="139" height="203">
+      <div class="card-body">
+        <h5 class="card-title">Estreno</h5>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://es.web.img2.acsta.net/pictures/22/02/28/16/18/2106533.jpg" class="card-img-top" alt="..." width="139" height="203">
+      <div class="card-body">
+        <h5 class="card-title">Estreno</h5>
+      </div>
+    </div>
+    <div class="card">
+      <img src="..." class="card-img-top" alt="..." width="139" height="203">
+      <div class="card-body">
+        <h5 class="card-title">Estreno</h5>
+      </div>
+    </div>
+  </div>
+
+<!-- segunda tanda -->
+  <div class="card-group" id="gruoup2">
+    <div class="card">
+      <img src="" class="card-img-top" alt="..." width="139" height="203">
+      <div class="card-body">
+        <h5 class="card-title">Estreno</h5>
+      </div>
+    </div>
+    <div class="card">
+      <img src="" class="card-img-top" alt="..." width="139" height="203">
+      <div class="card-body">
+        <h5 class="card-title">Estreno</h5>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <a [routerLink]="['./movies']">
+          <span> Seguir viendo la cartelera
+            <i class="pi pi-chevron-right"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
