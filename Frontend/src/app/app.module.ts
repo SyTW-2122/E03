@@ -13,6 +13,9 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { MoviesComponent } from './components/movies/movies.component';
+import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 // Providers
 import { authInterceptorProviders } from './helpers/auth.interceptor';
@@ -24,15 +27,8 @@ import { ButtonModule} from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { PrimeNgModule } from './prime-ng/prime-ng.module';
 import { TabMenuModule } from 'primeng/tabmenu';
-import { MoviesComponent } from './components/movies/movies.component';
-import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
-import { MenuComponent } from './components/menu/menu.component';
 
-
-
-
-
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -58,7 +54,8 @@ import { MenuComponent } from './components/menu/menu.component';
     AvatarModule,
     BreadcrumbModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    BsDatepickerModule.forRoot()
   ],
 /*   exports: [
     LoginComponent,
