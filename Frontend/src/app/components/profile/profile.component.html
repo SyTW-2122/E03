@@ -1,25 +1,21 @@
 <div class="container" *ngIf="currentUser; else loggedOut">
-  <header class="jumbotron">
-    <h1>Profile</h1>
-    <h3>
-      <strong>{{ currentUser.username }}</strong>
-    </h3>
-  </header>
-  <p>
-    <strong>Token:</strong>
-    {{ currentUser.accessToken.substring(0, 20) }} ...
-    {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
-  </p>
-  <p>
-    <strong>Email:</strong>
-    {{ currentUser.email }}
-  </p>
-  <strong>Roles:</strong>
-  <ul>
-    <li *ngFor="let role of currentUser.roles">{{ role }} </li>
-  </ul>
+  <div class="card">
+    <img id="fotoperfil" src="https://cdn-icons-png.flaticon.com/512/64/64572.png" class="card-img-top" alt="foto perfil">
+    <div class="card-body">
+      <h2>Profile</h2>
+      <p><strong>Name: </strong> {{ currentUser.username }}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <p><strong>Email: </strong> {{ currentUser.email }} </p>
+      </li>
+    </ul>
+    <div class="card-body">
+      <button id="editar" type="button" class="btn btn-dark">Editar perfil</button>
+    </div>
+  </div>
 </div>
-  
+
 <ng-template #loggedOut>
   Please login.
 </ng-template>
