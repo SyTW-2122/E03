@@ -1,5 +1,5 @@
 module.exports = {
-    HOST: "localhost",
+    HOST: "http://172.16.134.4",
     PORT: 27017,
-    DB: "cinemart_db"
+    DB: "CINEMART"
 }
