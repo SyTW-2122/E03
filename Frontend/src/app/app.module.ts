@@ -14,8 +14,6 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MoviesComponent } from './components/movies/movies.component';
-import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
-import { MenuComponent } from './components/menu/menu.component';
 
 // Providers
 import { authInterceptorProviders } from './helpers/auth.interceptor';
@@ -40,8 +38,6 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     ProfileComponent,
     RegisterComponent,
     MoviesComponent,
-    ComingSoonComponent,
-    MenuComponent
   ],
   imports: [
     AppRoutingModule,
