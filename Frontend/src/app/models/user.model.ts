@@ -1,9 +1,9 @@
 import { Deserializable } from './deserializable.model';
 
+// He cambiado los parametros del usuario para hacerlos coincidir con el backend ya que hay
+// algunos que aún no se si implementarlos.
 export class User implements Deserializable {
-    public id: number;
-    public nickname: string;
-    public name: string;
+    public username: string;
     public email: string;
     private password: string;
 
@@ -12,9 +12,7 @@ export class User implements Deserializable {
     }
 
     toString() {
-        return 'Id: ' + this.id + '\n' 
-        + 'Nombre de Usuario: ' + this.nickname + '\n' 
-        + 'Nombre: ' + this.name + '\n' 
+        return 'Nombre de Usuario: ' + this.username + '\n'  
         + 'Correo Electronico: ' + this.email + '\n';
     }
 }

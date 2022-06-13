@@ -1,7 +1,14 @@
 module.exports = {
-    host:       "172.16.134.4",
-    database:   'CINEMART',
-    user:       'admin',
-    password:   'admin',
-    port:       27017
+    HOST:       '172.16.134.4',
+    DB:         'CINEMART',
+    USER:       'admin',
+    PASSWORD:   'admin',
+    PORT:       27017
 };
+/**module.exports = {
+    HOST:       "localhost",
+    PORT:       27017,
+    DB:         "cinemart_example",
+    USER:       'admin',
+    PASSWORD:   'admin'
+};*/
