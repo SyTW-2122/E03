@@ -1,5 +1,7 @@
 module.exports = {
-    HOST: "http://172.16.134.4",
-    PORT: 27017,
-    DB: "CINEMART"
-}
+    host:       "172.16.134.4",
+    database:   'CINEMART',
+    user:       'admin',
+    password:   'admin',
+    port:       27017
+};
