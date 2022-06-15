@@ -4,7 +4,11 @@
   "description": "Aplication for SyTw signature.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "NODE_ENV=development nodemon index.js",
+    "lint": "npm run lint",
+    "start": "NODE_ENV=production node index.js",
+    "test": "NODE_ENV=test PORT=1234 jest --verbose tests/user.test.js",
+    "test:watch": "npm run test -- --watch"
   },
   "keywords": [
     "node.js",
@@ -13,7 +17,7 @@
     "authentication",
     "mongodb"
   ],
-  "author": "bezkoder",
+  "author": "E13",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

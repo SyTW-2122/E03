@@ -1,7 +1,12 @@
 const express = require("express");
 const cors = require("cors");
-const dbConfig = require("./src/config/db.config");
+const { MONGO_DB_URI, MONGO_DB_URI_TEST } = require("./src/config/db.config");
+const { NODE_ENV } = process.env
 
+const dbConfig = NODE_ENV === 'test'
+  ? MONGO_DB_URI_TEST
+  : MONGO_DB_URI
+  
 const app = express();
 
 var corsOptions = {
