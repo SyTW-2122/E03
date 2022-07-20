@@ -45,7 +45,7 @@ db.mongoose
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "API CINEMART." });
 });
 
 // routes
@@ -54,9 +54,11 @@ require("./src/routes/user.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
+
+module.exports = { app, server }
 
 function initial() {
   Role.estimatedDocumentCount((err, count) => {
