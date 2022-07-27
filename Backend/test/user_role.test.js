@@ -1,55 +1,90 @@
-const moongose = require('mongoose')
+const mongoose = require('mongoose')
 const supertest = require('supertest')
 const {app, server} = require('../server')
 const api = supertest(app)
 
 const User = require('../src/models/user.model')
-const Role = require('../src/models/role.model')
 
-const Roles = [
+const newUser = 
     {
-        name:       'user'
-    },
-    {
-        name:       'admin'
+        username:   'Edu',
+        email:      'edu@gmail.com',
+        password:   'edupassword',
+        roles:      ['user']
     }
-]
-const Users = [
+const newAdmin =
     {
-       username:    'Edu',
-       email:       'edu@email.com',
-       password:    'edupassword' ,
-       role:        'user'
+        username:   'Elena',
+        email:      'elena@email.com',
+        password:   'elenapassword',
+        roles:      ['admin', 'user']
     }
-    // {
-    //     username:   'Elena',
-    //     email:      'elena@email.com',
-    //     password:   'elenapassword',
-    //     roles: [
-    //                 'user'
-    //     ]
-    // }
-]
 
-beforeEach(async () => {
+beforeAll(async () => {
     await User.deleteMany({})
-    await Role.deleteMany({})
+});
 
-    for (const role of Roles) {
-        const roleObject = new Role(role)
-        await roleObject.save()
-    }
-    for (const user of Users) {
-        const userObject = new User(user)
-        await userObject.save()
-    }
+describe('Get content (not logged users)', () => {
+    test('/api/all', async () => {
+        const content = await api.get("/api/all")
+        expect(content.status).toEqual(200);
+        expect(content.headers['content-type']).toMatch('text/html; charset=utf-8');
+    });
+    test('/api/user forbidden', async () => {
+        const content = await api.get("/api/user")
+        expect(content.status).toEqual(403);
+        expect(content.headers['content-type']).toMatch(/application\/json/);
+    });
 })
 
-describe('Users get', () => {
-    test('all', async () => {
+describe('Register and login users', () => {
+    test('/api/auth/signup user succes', async () => {
         await api
-            .get("/api/all")
+            .post('/api/auth/signup')
+            .send(newUser)
             .expect(200)
-            .expect('Content-Type', /html/)
+            .expect('content-type', /application\/json/)
+    });
+    test('/api/auth/signup admin succes', async () => {
+        await api
+            .post('/api/auth/signup')
+            .send(newAdmin)
+            .expect(200)
+            .expect('content-type', /application\/json/)
+    });
+    test('/api/auth/signup not found', async () => {
+        await api
+            .post('/api/auth/signin')
+            .send({
+                'username': newAdmin.username + "ww",
+                'password': newAdmin.password
+            })
+            .expect(404)
+            .expect('content-type', /application\/json/)
     })
+    test('/api/auth/signup unauthorized', async () => {
+        await api 
+            .post('/api/auth/signin')
+            .send({
+                'username': newAdmin.username,
+                'password': newAdmin.password+"ww"
+            })
+            .expect(401)
+            .expect('content-type', /application\/json/)
+    })
+    test('/api/auth/signup succed', async () => {
+        await api
+            .post('/api/auth/signin')
+            .send({
+                'username': newAdmin.username,
+                'password': newAdmin.password
+            })
+            .expect(200)
+            .expect('content-type', /application\/json/)
+    })
+});
+
+afterAll(() => {
+    mongoose.connection.close()
+    server.close()
 })
