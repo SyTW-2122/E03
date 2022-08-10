@@ -6,19 +6,34 @@ const api = supertest(app)
 const User = require('../src/models/user.model')
 
 const newUser = 
-    {
-        username:   'Edu',
-        email:      'edu@gmail.com',
-        password:   'edupassword',
-        roles:      ['user']
-    }
+{
+    username:   'Edu',
+    email:      'edu@gmail.com',
+    password:   'edupassword',
+    roles:      ['user']
+}
+const badNewUser1 =
+{
+    username: 'Edu',
+    email: 'edu@gmail.com',
+    password: 'edupassword',
+    roles: ['user', 'moderator']
+}
+const badNewUser2 =
+{
+    username: 'Edus',
+    email: 'edu@gmail.com',
+    password: 'edupassword',
+    roles: ['user']
+}
 const newAdmin =
-    {
-        username:   'Elena',
-        email:      'elena@email.com',
-        password:   'elenapassword',
-        roles:      ['admin', 'user']
-    }
+{
+    username:   'Elena',
+    email:      'elena@gmail.com',
+    password:   'elenapassword',
+    roles:      ['admin', 'user']
+}
+var accessToken = ''
 
 beforeAll(async () => {
     await User.deleteMany({})
@@ -27,22 +42,42 @@ beforeAll(async () => {
 describe('Get content (not logged users)', () => {
     test('/api/all', async () => {
         const content = await api.get("/api/all")
-        expect(content.status).toEqual(200);
-        expect(content.headers['content-type']).toMatch('text/html; charset=utf-8');
+        expect(content.status).toEqual(200)
+        expect(content.headers['content-type']).toMatch('text/html; charset=utf-8')
     });
-    test('/api/user forbidden', async () => {
+    test('/api/user Not token provided', async () => {
         const content = await api.get("/api/user")
-        expect(content.status).toEqual(403);
-        expect(content.headers['content-type']).toMatch(/application\/json/);
+        expect(content.status).toEqual(403)
+        expect(content.headers['content-type']).toMatch(/application\/json/)
     });
 })
-
-describe('Register and login users', () => {
+describe('Register users', () => {
+    test('/api/auth/signup user, wrong role', async () => {
+        await api
+            .post('/api/auth/signup')
+            .send(badNewUser1)
+            .expect(400)
+            .expect('content-type', /application\/json/)
+    });
     test('/api/auth/signup user succes', async () => {
         await api
             .post('/api/auth/signup')
             .send(newUser)
             .expect(200)
+            .expect('content-type', /application\/json/)
+    });
+    test('/api/auth/signup user, username already in use', async () => {
+        await api
+            .post('/api/auth/signup')
+            .send(newUser)
+            .expect(400)
+            .expect('content-type', /application\/json/)
+    });
+        test('/api/auth/signup user, email already in use', async () => {
+        await api
+            .post('/api/auth/signup')
+            .send(badNewUser2)
+            .expect(400)
             .expect('content-type', /application\/json/)
     });
     test('/api/auth/signup admin succes', async () => {
@@ -52,37 +87,66 @@ describe('Register and login users', () => {
             .expect(200)
             .expect('content-type', /application\/json/)
     });
-    test('/api/auth/signup not found', async () => {
+})
+describe('Log in user account', () => {
+    test('/api/auth/signin user not found', async () => {
         await api
             .post('/api/auth/signin')
             .send({
-                'username': newAdmin.username + "ww",
-                'password': newAdmin.password
+                'username': newUser.username + "ww",
+                'password': newUser.password
             })
             .expect(404)
             .expect('content-type', /application\/json/)
     })
-    test('/api/auth/signup unauthorized', async () => {
-        await api 
+    test('/api/auth/signin invalid password', async () => {
+        await api
             .post('/api/auth/signin')
             .send({
-                'username': newAdmin.username,
-                'password': newAdmin.password+"ww"
+                'username': newUser.username,
+                'password': newUser.password + "ww"
             })
             .expect(401)
             .expect('content-type', /application\/json/)
     })
-    test('/api/auth/signup succed', async () => {
-        await api
+    test('/api/auth/signin succed', async () => {
+        const content = await api
             .post('/api/auth/signin')
             .send({
-                'username': newAdmin.username,
-                'password': newAdmin.password
+                'username': newUser.username,
+                'password': newUser.password
             })
-            .expect(200)
-            .expect('content-type', /application\/json/)
+        expect(content.status).toEqual(200)
+        expect(content.headers['content-type']).toMatch(/application\/json/)
+        expect(content.body.username).toEqual(newUser.username);
+        expect(content.body.email).toEqual(newUser.email);
+        accessToken = content.body.accessToken
     })
 });
+
+describe('Get content (logged user)', () => {
+    test('/api/user granted access token', async () => {
+        const content = await api
+            .get("/api/user")
+            .set({ 'x-access-token': accessToken, Accept: 'application/json' })
+        expect(content.status).toEqual(200)
+        expect(content.headers['content-type']).toMatch('text/html; charset=utf-8')
+    });
+    test('/api/admin require admin.', async () => {
+        const content = await api
+            .get("/api/admin")
+            .set({ 'x-access-token': accessToken, Accept: 'application/json' })
+        expect(content.status).toEqual(403)
+        expect(content.headers['content-type']).toMatch('application/json')
+    });
+    test('/api/user wrong token', async () => {
+        const content = await api
+            .get("/api/user")
+            .set({ 'x-access-token': accessToken+'sss', Accept: 'application/json' })
+        expect(content.status).toEqual(401)
+        expect(content.headers['content-type']).toMatch('application/json')
+    });
+})
 
 afterAll(() => {
     mongoose.connection.close()
