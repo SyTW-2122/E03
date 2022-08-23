@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   showModeratorBoard = false;
   username?: string;
 
+  title = 'cinemart';
+  
   constructor(private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
