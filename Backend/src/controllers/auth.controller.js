@@ -54,6 +54,7 @@ exports.signup = (req, res) => {
   });
 };
 exports.signin = (req, res) => {
+  console.log("estamos aqui");
   User.findOne({
     username: req.body.username
   })

@@ -15,4 +15,12 @@ module.exports = function (app) {
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.adminBoard
   );
+  app.post("/api/user/promote", 
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controller.promoteUserAdmin
+  );
+  app.post("/api/user/demote", 
+  [authJwt.verifyToken, authJwt.isAdmin],
+  controller.demoteUser
+);
 };

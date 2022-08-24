@@ -10,7 +10,9 @@ const dbConfig = NODE_ENV === 'test'
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:4200",
+  credentials:true,         
+  optionSuccessStatus:200
 };
 
 app.use(cors(corsOptions));

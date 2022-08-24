@@ -8,9 +8,7 @@ import { UserService } from '../../services/user.service';
 })
 export class BoardAdminComponent implements OnInit {
   content?: string;
-
   constructor(private userService: UserService) { }
-
   ngOnInit(): void {
     this.userService.getAdminBoard().subscribe(
       data => {

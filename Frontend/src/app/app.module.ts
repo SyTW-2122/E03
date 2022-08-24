@@ -53,11 +53,6 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     ButtonModule,
     BsDatepickerModule.forRoot()
   ],
-/*   exports: [
-    LoginComponent,
-    HomeComponent,
-    RegisterComponent
-  ], */
   providers: [ authInterceptorProviders ],
   bootstrap: [ AppComponent ]
 })
