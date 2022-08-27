@@ -5,8 +5,13 @@ import { Observable } from 'rxjs';
 const AUTH_API = 'http://localhost:4040/api/auth/';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' })
-};
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': 'localhost:4040',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, x-access-token, content-type'
+  })
+}
 
 @Injectable({
   providedIn: 'root'
