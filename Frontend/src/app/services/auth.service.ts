@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const AUTH_API = 'http://localhost:4040/api/auth/';
+const AUTH_API = 'http://10.6.131.115/api/auth/';
 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': 'localhost:4040',
+    'Access-Control-Allow-Origin': '10.6.131.115',
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
     'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, x-access-token, content-type'
   })
