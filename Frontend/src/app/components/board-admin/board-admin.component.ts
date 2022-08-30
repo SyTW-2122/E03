@@ -10,6 +10,7 @@ export class BoardAdminComponent implements OnInit {
   content?: string;
   constructor(private userService: UserService) { }
   ngOnInit(): void {
+    console.log("estoy en oninit");
     this.userService.getAdminBoard().subscribe(
       data => {
         this.content = data;
@@ -18,5 +19,6 @@ export class BoardAdminComponent implements OnInit {
         this.content = JSON.parse(JSON.stringify(err.error)).message;
       }
     );
+    console.log("saliedo de oninit");
   }
 }
