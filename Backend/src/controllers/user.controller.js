@@ -6,12 +6,15 @@ const Role = db.role;
 exports.allAccess = (req, res) => {
   res.status(200).send("Public Content.");
 };
+
 exports.userBoard = (req, res) => {
   res.status(200).send("User Content.");
 };
+
 exports.adminBoard = (req, res) => {
   res.status(200).send("Admin Content.");
 };
+
 exports.promoteUserAdmin = (req, res) => {
   User.findOne({
     username: req.body.username
@@ -39,7 +42,8 @@ exports.promoteUserAdmin = (req, res) => {
       });
     })
   })
-}
+};
+
 exports.demoteUser = (req, res) => {
   User.findOne({
     username: req.body.username
@@ -72,6 +76,6 @@ exports.demoteUser = (req, res) => {
     
     })
   })
-}
+};
 
 
