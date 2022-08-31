@@ -4,11 +4,7 @@ const filmSchema = new Schema({
   name: String,
   desc: String,
   gender: String,
-  img:
-    {
-      data: Buffer,
-      contentType: String,
-    }
+  img: String
 })
 
 filmSchema.set('toJSON', {
