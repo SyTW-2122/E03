@@ -16,6 +16,12 @@ export class BoardAdminComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
+  film:any = {
+    filmname: null,
+    desc: null,
+    gender: null,
+    image: null
+  };
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
