@@ -1,116 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin Board</title>
-    </head>
-<body>
-    <div class="container">
-        <h1>Administración</h1>
-        <div class="box">
-            <a href="/admin#divZero" class="button" id="button1">Ver usuarios</a>
-        </div>
+<div class="container">
+    <h1>Administración</h1>
+    <div class="box">
+        <a href="/admin#divZero" class="button" id="button1">Ver usuarios</a>
+    </div>
 
-        <div class="box">
-            <a href="/admin#divOne" class="button" id="button1">Añadir Usuario</a>
-        </div>
-        <div class="box">
-            <a href="/admin#divTwo" class="button">Ver películas</a>
-        </div>
-        <div class="box">
-            <a href="/admin#divthree" class="button">Añadir película</a>
-        </div>
-        <div class="overlay" id="divZero">
-            <div class="wrapper">
-                <h2>Ver Usuarios</h2>
-                <a href="/admin" class="close">&times;</a>
-                <div class="content">
-                    <div class="container">
-                        <div class="scroll">
-                        </div>
+    <div class="box">
+        <a href="/admin#divOne" class="button" id="button1">Añadir Usuario</a>
+    </div>
+    <div class="box">
+        <a href="/admin#divTwo" class="button">Ver películas</a>
+    </div>
+    <div class="box">
+        <a href="/admin#divthree" class="button">Añadir película</a>
+    </div>
+    <div class="overlay" id="divZero">
+        <div class="wrapper">
+            <h2>Ver Usuarios</h2>
+            <a href="/admin" class="close">&times;</a>
+            <div class="content">
+                <div class="container">
+                    <div class="scroll">
                     </div>
                 </div>
             </div>
         </div>
-        <div class="overlay" id="divOne">
-            <div class="wrapper">
-                <h2>Añadir usuarios</h2>
-                <a href="/admin" class="close">&times;</a>
-                <div class="content">
-                    <div class="container">
-                        <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" [(ngModel)]="form.username" required minlength="3" maxlength="20" #username="ngModel" />
-                            <div class="alert-danger" *ngIf="username.errors && f.submitted">
-                                <div *ngIf="username.errors['required']">Username is required</div>
-                                <div *ngIf="username.errors['minlength']">Username must be at least 3 characters</div>
-                            </div>
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="form.email" required email #email="ngModel"/>
-                            <div class="alert-danger" *ngIf="email.errors && f.submitted">
-                              <div *ngIf="email.errors['required']">Email is required</div>
-                              <div *ngIf="email.errors['email']">
-                                Email must be a valid email address
-                            </div>
-                            </div>
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel"/>
-                            <div class="alert-danger" *ngIf="password.errors && f.submitted">
-                                <div *ngIf="password.errors['required']">Password is required</div>
-                                <div *ngIf="password.errors['minlength']">
-                                    Password must be at least 6 characters
-                                </div>
-                            </div>
-                            <input type="submit" value="Submit">
-                            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-                                Signup failed!<br />{{ errorMessage }}
-                            </div>
-                        </form>
-                        <div class="alert alert-success" *ngIf="isSuccessful">
-                            Your registration is successful!
-                        </div>
-                    </div>    
-                </div>
-            </div>
-        </div>
-        <div class="overlay" id="divTwo">
-            <div class="wrapper">
-                <h2>Ver Películas</h2>
-                <a href="/admin" class="close">&times;</a>
-                <div class="content">
-                    <div class="container">
-                        <div class="scroll">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="overlay" id="divthree">
-            <div class="wrapper">
-                <h2>Añadir película</h2>
-                <a href="/admin" class="close">&times;</a>
-                <div class="content">
+    </div>
+    <div class="overlay" id="divOne">
+        <div class="wrapper">
+            <h2>Añadir usuarios</h2>
+            <a href="/admin" class="close">&times;</a>
+            <div class="content">
+                <div class="container">
                     <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                        <label for="filmname">Film name</label>
-                        <input class="form-control" type="text" id="filmname" name="filmname" [(ngModel)]="form.filmname" required minlength="3" maxlength="20" #filmname="ngModel" />
-                        <div class="alert-danger" *ngIf="filmname.errors && f.submitted">
-                            <div *ngIf="filmname.errors['required']">Film name is required</div>
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" [(ngModel)]="form.username" required minlength="3" maxlength="20" #username="ngModel" />
+                        <div class="alert-danger" *ngIf="username.errors && f.submitted">
+                            <div *ngIf="username.errors['required']">Username is required</div>
+                            <div *ngIf="username.errors['minlength']">Username must be at least 3 characters</div>
                         </div>
-                        <label for="desc">Description</label>
-                        <textarea class="form-control" id="desc" [(ngModel)]="form.desc" required desc #desc="ngModel"></textarea>
-                        <div class="alert-danger" *ngIf="desc.errors && f.submitted">
-                          <div *ngIf="desc.errors['required']">Description is required</div>
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="form.email" required email #email="ngModel"/>
+                        <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                            <div *ngIf="email.errors['required']">Email is required</div>
+                            <div *ngIf="email.errors['email']">
+                            Email must be a valid email address
                         </div>
-                        <label for="gender">Gender</label>
-                        <input class="form-control" type="text" id="gender" name="gender" [(ngModel)]="form.gender" required minlength="3" maxlength="20" #gender="ngModel" />
-                        <div class="alert-danger" *ngIf="gender.errors && f.submitted">
-                            <div *ngIf="gender.errors['required']">Gender is required</div>
                         </div>
-                        <label for="image">Billboard</label>
-                        <input class="file-upload form-control" type="file" id="image" name="image" [(ngModel)]="form.image" #image="ngModel" onchange="console.log(event.target.files)">
-                        <div class="alert-danger" *ngIf="image.errors && f.submitted">
-                            <div *ngIf="image.errors['required']">Image is required</div>
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel"/>
+                        <div class="alert-danger" *ngIf="password.errors && f.submitted">
+                            <div *ngIf="password.errors['required']">Password is required</div>
+                            <div *ngIf="password.errors['minlength']">
+                                Password must be at least 6 characters
+                            </div>
                         </div>
                         <input type="submit" value="Submit">
                         <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
@@ -120,9 +62,57 @@
                     <div class="alert alert-success" *ngIf="isSuccessful">
                         Your registration is successful!
                     </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+    <div class="overlay" id="divTwo">
+        <div class="wrapper">
+            <h2>Ver Películas</h2>
+            <a href="/admin" class="close">&times;</a>
+            <div class="content">
+                <div class="container">
+                    <div class="scroll">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
-</html>
+    <div class="overlay" id="divthree">
+        <div class="wrapper">
+            <h2>Añadir película</h2>
+            <a href="/admin" class="close">&times;</a>
+            <div class="content">
+                <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                    <label for="filmname">Film name</label>
+                    <input class="form-control" type="text" id="filmname" [(ngModel)]="form.filmname" name="filmname" required minlength="3" maxlength="20" #filmname="ngModel" />
+                    <div class="alert-danger" *ngIf="filmname.errors && f.submitted">
+                        <div *ngIf="filmname.errors['required']">Film name is required</div>
+                    </div>
+                    <label for="desc">Description</label>
+                    <textarea class="form-control" id="desc" [(ngModel)]="form.desc" name="desc" required desc #desc="ngModel"></textarea>
+                    <div class="alert-danger" *ngIf="desc.errors && f.submitted">
+                        <div *ngIf="desc.errors['required']">Description is required</div>
+                    </div>
+                    <label for="gender">Gender</label>
+                    <input class="form-control" type="text" id="gender" name="gender" [(ngModel)]="form.gender" required minlength="3" maxlength="20" #gender="ngModel" />
+                    <div class="alert-danger" *ngIf="gender.errors && f.submitted">
+                        <div *ngIf="gender.errors['required']">Gender is required</div>
+                    </div>
+                    <label for="image">Billboard</label>
+                    <input class="file-upload form-control" type="file" id="image" name="image" [(ngModel)]="form.image" #image="ngModel" onchange="console.log(event.target.files)">
+                    <div class="alert-danger" *ngIf="image.errors && f.submitted">
+                        <div *ngIf="image.errors['required']">Image is required</div>
+                    </div>
+                    <input type="submit" value="Submit">
+                    <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                        Signup failed!<br />{{ errorMessage }}
+                    </div>
+                </form>
+                <div class="alert alert-success" *ngIf="isSuccessful">
+                    Your registration is successful!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

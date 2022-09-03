@@ -1,4 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BoardAdminComponent } from './board-admin.component';
@@ -10,7 +13,8 @@ describe('BoardAdminComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ BoardAdminComponent ],
-      imports: [ HttpClientModule ]
+      imports: [ HttpClientModule, FormsModule, RouterTestingModule ],
+      providers: [ HttpClient ]
     })
     .compileComponents();
   });

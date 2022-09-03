@@ -28,7 +28,7 @@ describe('RegisterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Hay un formulario de Login con nombre y contraseña', () => {
+  it('Hay un formulario de Registro con nombre, email y contraseña', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('form')).toBeTruthy();
     expect(compiled.querySelector('#username')).toBeTruthy();
