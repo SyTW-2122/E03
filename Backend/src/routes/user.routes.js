@@ -23,5 +23,5 @@ module.exports = function (app) {
   app.post("/api/user/demote", 
   [authJwt.verifyToken, authJwt.isAdmin],
   controller.demoteUser
-);
+  );
 };

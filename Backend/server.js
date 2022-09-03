@@ -1,16 +1,21 @@
 const express = require("express");
 const cors = require("cors");
 const { MONGO_DB_URI, MONGO_DB_URI_TEST } = require("./src/config/db.config");
-const { NODE_ENV } = process.env
+const { ENV_PRODUCTION, ENV_DEVELOPMENT } = require("./src/config/env.config");
+const { NODE_ENV } = process.env;
 
+// Environment configuration for db and ip add
 const dbConfig = NODE_ENV === 'test'
   ? MONGO_DB_URI_TEST
   : MONGO_DB_URI
-  
+const ORIGIN_FRONT = NODE_ENV === 'production'
+  ? ENV_PRODUCTION
+  : ENV_DEVELOPMENT
+
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8080",
+  origin: ORIGIN_FRONT,
   credentials:true,         
   optionSuccessStatus:200
 };
@@ -50,13 +55,15 @@ app.get("/", (req, res) => {
   res.json({ message: "API CINEMART." });
 });
 
-// routes
+// routes (aquí lee las rutas)
 require("./src/routes/auth.routes")(app);
 require("./src/routes/user.routes")(app);
+require("./src/routes/film.routes")(app);
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8081;
-const server = app.listen(PORT, () => {
+const server = app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 

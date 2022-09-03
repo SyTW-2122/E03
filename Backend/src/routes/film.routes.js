@@ -1,6 +1,6 @@
 const { authJwt } = require("../middlewares");
-const controller = require("../controllers/film.controller");
-const controller = require("../controllers/user.controller");
+const controllerFilm = require("../controllers/film.controller");
+
 
 module.exports = function (app) {
   app.use(function (req, res, next) {
@@ -9,15 +9,15 @@ module.exports = function (app) {
     "x-access-token, Origin, Content-Type, Accept"
     );
     next();
-});
-  app.get("/api/film/all", controller.allFilms);
-  app.get("/api/film/searchFilm", controller.searchFilm);
+  });
+  app.get("/api/film/all", controllerFilm.allFilms);
+  app.get("/api/film/searchFilm", controllerFilm.searchFilm);
   app.post("/api/film/new", 
-    [authJwT.verifyToken, authJwt.isAdmin],
-    controller.newFilm
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controllerFilm.newFilm
   );
   app.delete("/api/film/delete",
-    [authJwT.verifyToken, authJwt.isAdmin],
-    controller.deleteFilm
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controllerFilm.deleteFilm
   );
 }

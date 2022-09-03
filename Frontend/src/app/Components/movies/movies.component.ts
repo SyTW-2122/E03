@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from 'src/app/services/movies.service';
+import { filmsDTO } from 'src/app/models/filmsdto';
 
 @Component({
   selector: 'app-movies',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviesComponent implements OnInit {
 
-  constructor() { }
+  moviesArray:filmsDTO[] = [];
+  constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
+    this.movieService.getAllMovies().subscribe({
+      next: data => {
+        console.log("Esto es lo que me devuelven las peliculas:", data);
+        this.moviesArray = data;
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
   }
 
 }

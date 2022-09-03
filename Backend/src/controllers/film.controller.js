@@ -10,9 +10,6 @@ exports.allFilms = (req, res) => {
         res.status(500).send({ message: err });
         return;
       }
-      if (!films) {
-        return res.status(404).send({ message: "There is not any film." });
-      }
       res.status(200).send(films);
     })
 };

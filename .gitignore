@@ -13,7 +13,7 @@
 /Backend/node_modules
 /Backend/package-lock.json
 /Frontend/.angular/cache/13.3.2
-/Frontend/package-lock.json
+/Frontend/dist
 
 # profiling files
 chrome-profiler-events*.json
