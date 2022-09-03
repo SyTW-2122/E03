@@ -190,7 +190,6 @@ describe('Promote and Demote users', () => {
     });
 })
 
-
 afterAll(() => {
     mongoose.connection.close()
     server.close()
