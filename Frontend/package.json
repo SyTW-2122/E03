@@ -6,7 +6,7 @@
     "start": "ng serve --configuration=local",
     "build": "ng build",
     "test": "ng test --configuration=local",
-    "coverage": "nyc ng test | coveralls && rm -rf .nyc_output",
+    "coverage": "nyc ng test",
     "lint": "ng lint --configuration=local",
     "e2e": "ng e2e --configuration=local"
   },
