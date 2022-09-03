@@ -34,6 +34,7 @@ const newAdmin =
     roles:      ['admin', 'user']
 }
 var accessToken = ''
+var accessAdminToken = ''
 
 beforeAll(async () => {
     await User.deleteMany({})
@@ -147,6 +148,48 @@ describe('Get content (logged user)', () => {
         expect(content.headers['content-type']).toMatch('application/json')
     });
 })
+
+describe('Promote and Demote users', () => {
+    test('/api/auth/signin succed', async () => {
+        const content = await api
+            .post('/api/auth/signin')
+            .send({
+                'username': newAdmin.username,
+                'password': newAdmin.password
+            })
+        expect(content.status).toEqual(200);
+        expect(content.headers['content-type']).toMatch(/application\/json/);
+        expect(content.body.username).toEqual(newAdmin.username);
+        expect(content.body.email).toEqual(newAdmin.email);
+        accessAdminToken = content.body.accessToken
+    })
+    test('/api/user/promote Promote User to Admin', async () => {
+        const content = await api
+            .post('/api/user/promote')
+            .set({ 'x-access-token': accessAdminToken, Accept: 'application/json' })
+            .send({
+                'username': newUser.username,
+                'role':     newUser.roles[0]
+            })
+        expect(content.status).toEqual(200);
+        expect(content.headers['content-type']).toMatch(/application\/json/);
+        expect(content.text).toEqual("{\"message\":\"User was promoted successfully!\"}");
+    });
+
+    test('/api/user/demote Demote User from Admin', async () => {
+        const content = await api
+            .post('/api/user/demote')
+            .set({ 'x-access-token': accessAdminToken, Accept: 'application/json' })
+            .send({
+                'username': newUser.username,
+                'role':     'admin'
+            })
+        expect(content.status).toEqual(200);
+        expect(content.headers['content-type']).toMatch(/application\/json/);
+        expect(content.text).toEqual("{\"message\":\"User was demoted from admin successfully!\"}");
+    });
+})
+
 
 afterAll(() => {
     mongoose.connection.close()
