@@ -1,5 +1,6 @@
 <!-- Select cinema -->
-<div id="seleccion" class="container">
+<div id="seleccion" class="container bg-transparent">
+  <h1>Cartelera</h1>
   <div class="row">
     <div class="col-3 p-3">
       <select class="form-select" aria-label="Select cinema">
@@ -17,7 +18,7 @@
     </div>
 
     <div class="col-3 p-3 form-group">
-      <input type="text" class="form-control" placeholder="Date" bsDatepicker>
+      <input id="startDate" class="form-control" type="date" />
     </div>
 
     <div class="col-3 p-3">
@@ -27,47 +28,25 @@
 </div>
 
 <!-- Peliculas -->
-<div class="card mb-3">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://es.web.img2.acsta.net/pictures/22/02/28/16/18/2106533.jpg" class="img-fluid rounded-start"  alt="..." width="139" height="203">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-        <button id="venta" type="button" class="btn btn-dark">Comprar</button>
-    </div>
-  </div>
-</div>
 
-<div class="card mb-3">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://es.web.img2.acsta.net/pictures/22/02/28/16/18/2106533.jpg" class="img-fluid rounded-start"  alt="..." width="139" height="203">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+<div class="container bg-transparent">
+  <div  class="card mb-3" *ngFor="let movie of moviesArray; index as i">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src={{movie.image}} class="img-fluid rounded-start" alt="...">
       </div>
-      <button id="venta" type="button" class="btn btn-dark">Comprar</button>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{movie.name}}</h5>
+          <div class="module line-clamp">
+            <p class="card-text">{{movie.desc}}</p>
+          </div>
+          <div class="module line-clamp">
+            <p class="card-text" id="gender">Genero: {{movie.gender}}</p>
+          </div>
+          <button id="venta" type="button" class="btn btn-dark">Comprar</button>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="card mb-3">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://es.web.img2.acsta.net/pictures/22/02/28/16/18/2106533.jpg" class="img-fluid rounded-start"  alt="..." width="139" height="203">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-      <button id="venta" type="button" class="btn btn-dark">Comprar</button>
-    </div>
-  </div>
-</div>
+</div >

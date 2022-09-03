@@ -30,24 +30,20 @@ exports.searchFilm = (req, res) => {
   })
 };
 exports.newFilm = (req, res) => {
-  Film.findOne({
-    name: req.body.name
-  },
-  (err, film) => {
+  const film = new Film({
+    name: req.body.name,
+    desc: req.body.desc,
+    gender: req.body.gender,
+    image: req.body.image,
+  });
+  film.save(err => {
     if (err) {
       res.status(500).send({ message: err });
       return;
     }
-    film.push(film._id)
-    film.save(err => {
-      if (err) {
-        res.status(500).send({ message: err });
-        return;
-      }
-      res.send({ message: "Film was created successfully!" });
-    });
-  })
-};
+    res.send({ message: "Film stored."});
+  });
+}
 
 exports.deleteFilm = (req, res) => {
   Film.findOne({

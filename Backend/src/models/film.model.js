@@ -4,7 +4,7 @@ const filmSchema = new Schema({
   name: String,
   desc: String,
   gender: String,
-  img: String
+  image: String
 })
 
 filmSchema.set('toJSON', {

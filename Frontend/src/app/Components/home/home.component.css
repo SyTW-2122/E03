@@ -1,0 +1,29 @@
+h5 {
+  text-align: center;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  display: inline-block;
+  width: 19.5%;
+  margin-right: 0.625%;
+  text-align: center;
+  line-height: 3;
+  color: rgb(255, 255, 255);
+  position: relative;
+  left: 40%;
+}
+
+a:link, a:visited, a:focus {
+  background: #212529!important;
+}
+
+a:hover {
+  background: rgb(129, 129, 129);
+}
+
+a:active {
+  background: red;
+  color: white;
+}

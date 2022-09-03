@@ -5,7 +5,7 @@ import { filmsDTO } from 'src/app/models/filmsdto';
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.scss']
+  styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
 
@@ -15,7 +15,6 @@ export class MoviesComponent implements OnInit {
   ngOnInit(): void {
     this.movieService.getAllMovies().subscribe({
       next: data => {
-        console.log("Esto es lo que me devuelven las peliculas:", data);
         this.moviesArray = data;
       },
       error: err => {
@@ -23,5 +22,4 @@ export class MoviesComponent implements OnInit {
       }
     });
   }
-
 }

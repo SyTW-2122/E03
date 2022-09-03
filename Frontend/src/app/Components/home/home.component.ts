@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { MovieService } from 'src/app/services/movies.service';
+import { filmsDTO } from 'src/app/models/filmsdto';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +9,22 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  content?: string;
 
-  constructor(private userService: UserService) { }
+  content?: string;
+  moviesArray:filmsDTO[] = [];
+
+  constructor(private userService: UserService, private movieService: MovieService) { }
 
   ngOnInit(): void {
+    this.movieService.getAllMovies().subscribe({
+      next: data => {
+        this.moviesArray = data;
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
+    this.moviesArray.splice(2);
     this.userService.getPublicContent().subscribe({
       next: data => {
         this.content = data;
