@@ -188,7 +188,7 @@ describe('Promote and Demote users', () => {
         expect(content.headers['content-type']).toMatch(/application\/json/);
         expect(content.text).toEqual("{\"message\":\"User was demoted from admin successfully!\"}");
     });
-})
+});
 
 afterAll(() => {
     mongoose.connection.close()

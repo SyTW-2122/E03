@@ -39,7 +39,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const db = require("./src/models");
 const Role = db.role;
-const url = `${dbConfig.entry}://${dbConfig.USER}:${dbConfig.PASSWORD}@${dbConfig.HOST}`;
+
 if ( dbConfig == MONGO_DB_URI_TEST_CI) {
   db.mongoose
     .connect(`${dbConfig.entry}://${dbConfig.USER}:${dbConfig.PASSWORD}@${dbConfig.HOST}`, {

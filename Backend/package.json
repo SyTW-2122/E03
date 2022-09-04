@@ -9,11 +9,11 @@
     "start": "NODE_ENV=production node server.js",
     "start:ci": "NODE_ENV='test:ci' node server.js",
     "start:watch": "NODE_ENV=production npx nodemon ./server.js",
-    "test": "NODE_ENV=test jest --verbose --silent",
-    "test:ci": "NODE_ENV='test:ci' jest --verbose --silent",
+    "test": "NODE_ENV=test jest --verbose --silent --runInBand",
+    "test:ci": "NODE_ENV='test:ci' jest --verbose --silent --runInBand",
     "test:watch": "npm run test -- --watch",
-    "coverage": "NODE_ENV=test jest --silent --coverage && cat ./coverage/lcov.info | coveralls",
-    "coverage:ci": "NODE_ENV='test:ci' jest --silent --coverage && cat ./coverage/lcov.info | coveralls"
+    "coverage": "NODE_ENV=test jest --runInBand --silent --coverage && cat ./coverage/lcov.info | coveralls",
+    "coverage:ci": "NODE_ENV='test:ci' jest --runInBand --silent --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "keywords": [
     "node.js",

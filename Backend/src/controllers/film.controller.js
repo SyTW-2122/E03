@@ -54,13 +54,18 @@ exports.deleteFilm = (req, res) => {
       res.status(500).send({ message: err });
       return;
     }
-    film.splice(film.findIndex(e => e === film._id), 1);
-    film.save(err => {
+    if (!film) {
+      return res.status(404).send({ message: "Film Not found." });
+    }
+    Film.deleteOne({
+      name: req.body.name
+    },
+    (err) => {
       if (err) {
         res.status(500).send({ message: err });
         return;
       }
-      res.send({ message: "Film was deleted from "+req.body.film+" successfully!" });
+      res.send({ message: "Film was deleted from " + req.body.name + " successfully!" });
     });
-  })
+  });
 };
