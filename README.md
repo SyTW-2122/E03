@@ -4,7 +4,7 @@
 
 [![Test](https://github.com/SyTW-2122/E03/actions/workflows/CI-backend.yml/badge.svg)](https://github.com/SyTW-2122/E03/actions/workflows/CI-backend.yml)
 
-[![Coverage Frontend Status](https://coveralls.io/repos/github/SyTW-2122/E03/badge.svg?branch=desarrollo)](https://coveralls.io/github/SyTW-2122/E03?branch=desarrollo)
+[![Coverage Status](https://coveralls.io/repos/github/SyTW-2122/E03/badge.svg?branch=desarrollo)](https://coveralls.io/github/SyTW-2122/E03?branch=desarrollo)
 
 [![Coveralls](https://github.com/SyTW-2122/E03/actions/workflows/Coveralls.yml/badge.svg?branch=desarrollo)](https://github.com/SyTW-2122/E03/actions/workflows/Coveralls.yml)
 
