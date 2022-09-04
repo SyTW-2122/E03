@@ -10,7 +10,9 @@
     "start:watch": "NODE_ENV=production npx nodemon ./server.js",
     "test": "NODE_ENV=test jest --verbose --silent",
     "test:watch": "npm run test -- --watch",
-    "test:ci": "NODE_ENV='test:ci' jest --verbose --silent"
+    "test:ci": "NODE_ENV='test:ci' jest --verbose --silent",
+    "start:ci": "NODE_ENV='test:ci' node server.js"
+
   },
   "keywords": [
     "node.js",

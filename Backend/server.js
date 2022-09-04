@@ -5,15 +5,16 @@ const { ENV_PRODUCTION, ENV_DEVELOPMENT } = require("./src/config/env.config");
 const { NODE_ENV } = process.env;
 
 // Environment configuration for db and ip add
+var dbConfig;
 switch(NODE_ENV) {
   case 'test':
-    dbConfig = MONGO_DB_URI_TEST
+    var dbConfig = MONGO_DB_URI_TEST;
     break;
   case 'test:ci':
-    dbConfig = MONGO_DB_URI_TEST_CI
+    var dbConfig = MONGO_DB_URI_TEST_CI;
     break;
   default:
-    dbConfig = MONGO_DB_URI
+    var dbConfig = MONGO_DB_URI;
 }
 
 const ORIGIN_FRONT = NODE_ENV === 'production'
@@ -43,12 +44,16 @@ if ( dbConfig == MONGO_DB_URI_TEST_CI) {
   db.mongoose
     .connect(`${dbConfig.entry}://${dbConfig.USER}:${dbConfig.PASSWORD}@${dbConfig.HOST}`, {
       useNewUrlParser: true,
+      useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
+      serverSelectionTimeoutMS: 5000,
+      autoIndex: false, // Don't build indexes
+      maxPoolSize: 10, // Maintain up to 10 socket connections
+      socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+      family: 4 // Use IPv4, skip trying IPv6
     })
     .then(() => {
-      console.log("Successfully connect to MongoDB.");
+      console.log("Successfully connect to MongoDB Online.");
       initial();
     })
     .catch(err => {
