@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --configuration=local",
+    "start": "ng serve",
     "build": "ng build",
-    "test": "ng test --configuration=local",
+    "test": "ng test",
     "test:ci": "ng test --watch=false",
-    "coverall": "ng test --watch=false --code-coverage && cat ./coverage/cinemart/lcov.info | coveralls",
-    "lint": "ng lint --configuration=local",
-    "e2e": "ng e2e --configuration=local"
+    "coverage": "ng test --watch=false --code-coverage && cat ./coverage/cinemart/lcov.info | coveralls",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

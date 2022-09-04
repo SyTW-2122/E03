@@ -10,6 +10,7 @@
     "start:watch": "NODE_ENV=production npx nodemon ./server.js",
     "test": "NODE_ENV=test jest --verbose --silent",
     "test:watch": "npm run test -- --watch",
+    "coverage": "NODE_ENV=test jest --silent --coverage && cat ./coverage/lcov.info | coveralls",
     "test:ci": "NODE_ENV='test:ci' jest --verbose --silent",
     "start:ci": "NODE_ENV='test:ci' node server.js"
 
