@@ -1,3 +1,11 @@
+
+[![Test](https://github.com/SyTW-2122/E03/actions/workflows/CI-frontend.yml/badge.svg)](https://github.com/SyTW-2122/E03/actions/workflows/CI-frontend.yml)
+
+
+[![Test](https://github.com/SyTW-2122/E03/actions/workflows/CI-backend.yml/badge.svg)](https://github.com/SyTW-2122/E03/actions/workflows/CI-backend.yml)
+
+
+
 # Cinemart
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.15.

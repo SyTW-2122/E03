@@ -28,4 +28,4 @@ jobs:
         run: cd ./Backend && npm install
 
       - name: Backend Test
-        run: cd ./Backend && npm run test
+        run: cd ./Backend && npm run test:ci
