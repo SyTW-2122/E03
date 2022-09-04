@@ -25,9 +25,9 @@ jobs:
       run: cd ./Frontend && npm install
 
     - name: Generating coverage report
-      run: cd ./Frontend && npm run coveralls
+      run: cd ./Frontend && npm run coverall
 
     - name: Coveralls GitHub Action
-      uses: coverallsapp/github-action@desarrollo"
+      uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN}}
