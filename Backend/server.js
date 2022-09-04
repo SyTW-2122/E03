@@ -1,13 +1,21 @@
 const express = require("express");
 const cors = require("cors");
-const { MONGO_DB_URI, MONGO_DB_URI_TEST } = require("./src/config/db.config");
+const { MONGO_DB_URI, MONGO_DB_URI_TEST, MONGO_DB_URI_TEST_CI } = require("./src/config/db.config");
 const { ENV_PRODUCTION, ENV_DEVELOPMENT } = require("./src/config/env.config");
 const { NODE_ENV } = process.env;
 
 // Environment configuration for db and ip add
-const dbConfig = NODE_ENV === 'test'
-  ? MONGO_DB_URI_TEST
-  : MONGO_DB_URI
+switch(NODE_ENV) {
+  case 'test':
+    dbConfig = MONGO_DB_URI_TEST
+    break;
+  case 'test:ci':
+    dbConfig = MONGO_DB_URI_TEST_CI
+    break;
+  default:
+    dbConfig = MONGO_DB_URI
+}
+
 const ORIGIN_FRONT = NODE_ENV === 'production'
   ? ENV_PRODUCTION
   : ENV_DEVELOPMENT
@@ -30,26 +38,44 @@ app.use(express.urlencoded({ extended: true }));
 
 const db = require("./src/models");
 const Role = db.role;
-db.mongoose
-  .connect(`mongodb://${dbConfig.USER}:${dbConfig.PASSWORD}@${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 5000,
-    autoIndex: false, // Don't build indexes
-    maxPoolSize: 10, // Maintain up to 10 socket connections
-    serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
-    socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
-    family: 4 // Use IPv4, skip trying IPv6
-  })
-  .then(() => {
-    console.log("Successfully connect to MongoDB.");
-    initial();
-  })
-  .catch(err => {
-    console.error("Connection error", err);
-    process.exit();
-  });
-
+const url = `${dbConfig.entry}://${dbConfig.USER}:${dbConfig.PASSWORD}@${dbConfig.HOST}`;
+if ( dbConfig == MONGO_DB_URI_TEST_CI) {
+  db.mongoose
+    .connect(`${dbConfig.entry}://${dbConfig.USER}:${dbConfig.PASSWORD}@${dbConfig.HOST}`, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    })
+    .then(() => {
+      console.log("Successfully connect to MongoDB.");
+      initial();
+    })
+    .catch(err => {
+      console.error("Connection errorrr", err);
+      process.exit();
+    });
+} else {
+  db.mongoose
+    .connect(`${dbConfig.entry}://${dbConfig.USER}:${dbConfig.PASSWORD}@${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 5000,
+      autoIndex: false, // Don't build indexes
+      maxPoolSize: 10, // Maintain up to 10 socket connections
+      serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
+      socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+      family: 4 // Use IPv4, skip trying IPv6
+    })
+    .then(() => {
+      console.log("Successfully connect to MongoDB.");
+      initial();
+    })
+    .catch(err => {
+      console.error("Connection error", err);
+      process.exit();
+    });
+}
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "API CINEMART." });
