@@ -1,13 +1,15 @@
+
 name: Coveralls
+
 on:
   push:
-    branches: [ main ]
+    branches: [ "desarrollo" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "desarrollo" ]
 
 jobs:
   coveralls:
-
+    name: Coverage code
     runs-on: ubuntu-latest
 
     steps:
@@ -24,7 +26,7 @@ jobs:
 
     - name: Generating coverage report
       run: cd ./Frontend && npm run coveralls
-      
+
     - name: Coveralls GitHub Action
       uses: coverallsapp/github-action@master
       with:
