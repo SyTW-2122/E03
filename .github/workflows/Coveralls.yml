@@ -13,14 +13,18 @@ jobs:
     steps:
     - name: Cloning repo
       uses: actions/checkout@v2
+
     - name: Use Node.js 12.x
       uses: actions/setup-node@v2
       with:
         node-version: 12.x
+
     - name: installing dependencies
       run: cd ./Frontend && npm install
+
     - name: Generating coverage report
       run: cd ./Frontend && npm run coveralls
+      
     - name: Coveralls GitHub Action
       uses: coverallsapp/github-action@master
       with:
