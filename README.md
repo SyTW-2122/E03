@@ -18,7 +18,7 @@
 <a href="https://coveralls.io/github/SyTW-2122/E03?branch=desarrollo">
     <img alt="Coverage Status" src="https://coveralls.io/repos/github/SyTW-2122/E03/badge.svg?branch=desarrollo">
 </a>
-<a href="https://github.com/SyTW-2122/E03/blob/desarrollo/LICENSE">
+<a href="https://github.com/SyTW-2122/E03/blob/master/LICENSE">
     <img alt="License: GPL v3" src="https://img.shields.io/github/license/SyTW-2122/E03">
 </a>
 
