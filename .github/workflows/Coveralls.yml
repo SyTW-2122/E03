@@ -31,7 +31,7 @@ jobs:
       run: cd ./Backend && npm install
 
     - name: Generating coverage report
-      run: cd ./Backend && npm run coverage
+      run: cd ./Backend && npm run coverage:ci
 
     #- name: Publish to coveralls.io
    #   uses: coverallsapp/github-action@v1.1.2
