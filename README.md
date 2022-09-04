@@ -18,8 +18,7 @@
 <a href="https://github.com/SyTW-2122/E03/actions/workflows/CI-backend.yml">
     <img alt="BackendCI" src="https://github.com/SyTW-2122/E03/actions/workflows/CI-backend.yml/badge.svg">
 </a>
-<a href="https://coveralls.io/github/SyTW-2122/E03?branch=desarrollo">
-    <img alt="Coverage Status" src="https://coveralls.io/repos/github/SyTW-2122/E03/badge.svg?branch=desarrollo">
+<a href='https://coveralls.io/github/SyTW-2122/E03?branch=desarrollo'><img src='https://coveralls.io/repos/github/SyTW-2122/E03/badge.svg?branch=desarrollo' alt='Coverage Status' />
 </a>
 
 
