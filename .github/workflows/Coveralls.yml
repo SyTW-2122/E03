@@ -20,8 +20,8 @@ jobs:
     - name: installing dependencies
       run: cd ./Frontend && npm install
     - name: Generating coverage report
-      run: cd ./Frontend && npm run test:ci
+      run: cd ./Frontend && npm run coveralls
     - name: Coveralls GitHub Action
-      uses: coverallsapp/github-action@master
+      uses: coverallsapp/github-action@desarrollo
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
