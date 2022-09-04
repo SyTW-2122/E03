@@ -6,7 +6,8 @@
     "start": "ng serve --configuration=local",
     "build": "ng build",
     "test": "ng test --configuration=local",
-    "test:ci": "ng test --watch=false --code-coverage && cat ./coverage/cinemart/lcov.info | coveralls",
+    "test:ci": "ng test --watch=false",
+    "coveralls": "ng test --watch=false --code-coverage && cat ./coverage/cinemart/lcov.info | coveralls",
     "lint": "ng lint --configuration=local",
     "e2e": "ng e2e --configuration=local"
   },
