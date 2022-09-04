@@ -1,9 +1,9 @@
 name: Coveralls
 on:
   push:
-    branches: [ desarrollo ]
+    branches: [ main ]
   pull_request:
-    branches: [ desarrollo ]
+    branches: [ main ]
 
 jobs:
   coveralls:
@@ -22,6 +22,6 @@ jobs:
     - name: Generating coverage report
       run: cd ./Frontend && npm run coveralls
     - name: Coveralls GitHub Action
-      uses: coverallsapp/github-action@desarrollo
+      uses: coverallsapp/github-action@master
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN}}
