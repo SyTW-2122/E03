@@ -29,4 +29,4 @@ jobs:
         run: cd ./Frontend && npm install
 
       - name: Frontend Test
-        run: cd ./Frontend && ng test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+        run: cd ./Frontend && npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
