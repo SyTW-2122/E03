@@ -6,11 +6,9 @@
     "start": "ng serve --configuration=local",
     "build": "ng build",
     "test": "ng test --configuration=local",
-    "test:ci": "ng test -- --no-watch --no-progress --browsers=ChromeHeadlessCI",
-    "coverage": "nyc ng test --watch=false | coveralls && rm -rf .nyc_output",
+    "test:ci": "ng test --watch=false --code-coverage && cat ./coverage/cinemart/lcov.info | coveralls",
     "lint": "ng lint --configuration=local",
-    "e2e": "ng e2e --configuration=local",
-    "test-ci": "nyc ng test --watch=false --code-coverage && cat ./coverage/lcov.info | coveralls"
+    "e2e": "ng e2e --configuration=local"
   },
   "private": true,
   "dependencies": {
@@ -39,8 +37,10 @@
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "coveralls": "^3.1.1",
     "jasmine-core": "~4.0.0",
     "jasmine-spec-reporter": "~5.0.0",
+    "jest": "^29.0.2",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",

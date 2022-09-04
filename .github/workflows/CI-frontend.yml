@@ -30,3 +30,8 @@ jobs:
 
       - name: Frontend Test
         run: cd ./Frontend && npm run test:ci -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+
+      - name: Publish to coveralls.io
+        uses: coverallsapp/github-action@v1.1.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
