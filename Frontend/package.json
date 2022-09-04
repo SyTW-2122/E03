@@ -6,7 +6,7 @@
     "start": "ng serve --configuration=local",
     "build": "ng build",
     "test": "ng test --configuration=local",
-    "test:ci": "ng test -- --no-watch --no-progress --browsers=ChromeHeadlessCI"
+    "test:ci": "ng test -- --no-watch --no-progress --browsers=ChromeHeadlessCI",
     "coverage": "nyc ng test --watch=false | coveralls && rm -rf .nyc_output",
     "lint": "ng lint --configuration=local",
     "e2e": "ng e2e --configuration=local",
