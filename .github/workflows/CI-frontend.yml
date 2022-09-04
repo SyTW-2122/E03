@@ -26,7 +26,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Setup Frontend
-        run: npm install
+        run: cd ./Frontend && npm install
 
       - name: Frontend Test
-        run: ng test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+        run: cd ./Frontend && ng test -- --no-watch --no-progress --browsers=ChromeHeadlessCI

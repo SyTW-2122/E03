@@ -6,9 +6,10 @@
     "start": "ng serve --configuration=local",
     "build": "ng build",
     "test": "ng test --configuration=local",
-    "coverage": "nyc ng test",
+    "coverage": "nyc ng test --watch=false | coveralls && rm -rf .nyc_output",
     "lint": "ng lint --configuration=local",
-    "e2e": "ng e2e --configuration=local"
+    "e2e": "ng e2e --configuration=local",
+    "test-ci": "nyc ng test --watch=false --code-coverage && cat ./coverage/lcov.info | coveralls"
   },
   "private": true,
   "dependencies": {
