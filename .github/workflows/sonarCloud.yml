@@ -22,12 +22,6 @@ jobs:
         run: cd ./Frontend && npm install
       - name: Generating coverage report
         run: cd ./Frontend && npm run coverage
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          
       - name: installing dependencies
         run: cd ./Backend && npm install
       - name: Generating coverage report
