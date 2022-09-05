@@ -1,0 +1,40 @@
+
+name: Coveralls
+
+on:
+  push:
+    branches: [ "desarrollo" ]
+  pull_request:
+    branches: [ "desarrollo" ]
+
+jobs:
+  coveralls:
+    name: Coverage code
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Cloning repo
+      uses: actions/checkout@v2
+
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v2
+      with:
+        node-version: 12.x
+
+    - name: installing dependencies
+      run: cd ./Frontend && npm install
+
+    - name: Generating coverage report
+      run: cd ./Frontend && npm run coverage
+
+    - name: installing dependencies
+      run: cd ./Backend && npm install
+
+    - name: Generating coverage report
+      run: cd ./Backend && npm run coverage:ci
+
+    #- name: Publish to coveralls.io
+   #   uses: coverallsapp/github-action@v1.1.2
+  #    with:
+ #       github-token: ${{ secrets.GITHUB_TOKEN}}
+#        path-to-lcov: ./Frontend/coverage/cinemart/lcov.info

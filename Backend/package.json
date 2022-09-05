@@ -1,29 +1,58 @@
 {
-  "name": "backend",
+  "name": "cinemart-backend",
   "version": "1.0.0",
-  "description": "Node.js + MongoDB: JWT Authentication & Authorization",
+  "description": "Aplication for SyTw signature.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "NODE_ENV=development nodemon server.js",
+    "lint": "npm run lint",
+    "start": "NODE_ENV=production node server.js",
+    "start:ci": "NODE_ENV='test:ci' node server.js",
+    "start:watch": "NODE_ENV=production npx nodemon ./server.js",
+    "test": "NODE_ENV=test jest --verbose --silent --runInBand",
+    "test:ci": "NODE_ENV='test:ci' jest --verbose --silent --runInBand",
+    "test:watch": "npm run test -- --watch",
+    "coverage": "NODE_ENV=test jest --runInBand --silent --coverage && cat ./coverage/lcov.info | coveralls",
+    "coverage:ci": "NODE_ENV='test:ci' jest --runInBand --silent --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "keywords": [
     "node.js",
     "express",
     "jwt",
-    "refresh token",
     "authentication",
-    "authorization",
-    "mongodb"
+    "mongodb",
+    "upload",
+    "multiple",
+    "files",
+    "images"
   ],
-  "author": "cinemart",
+  "author": "E13",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.10",
-    "uuid": "^8.3.2"
+    "mongoose": "^6.0.12",
+    "multer": "^1.4.4-lts.1",
+    "multer-gridfs-storage": "^5.0.2"
+  },
+  "devDependencies": {
+    "coveralls": "^3.1.1",
+    "eslint": "7.20.0",
+    "jest": "26.6.3",
+    "nodemon": "^2.0.19",
+    "nyc": "^15.1.0",
+    "standard": "16.0.3",
+    "supertest": "6.1.3"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json",
+    "env": {
+      "jest": true
+    }
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

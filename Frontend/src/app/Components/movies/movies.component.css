@@ -1,0 +1,18 @@
+.button{
+  height: 35px;
+  width: 20px;
+}
+
+.card{
+  margin: 10px;
+  margin-top: 15px;
+  width: 550px;
+  height: 262px;
+  background-color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  left: 25%;
+}
+
+#gender{
+  font-weight: bold;
+}

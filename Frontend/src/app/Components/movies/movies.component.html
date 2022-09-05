@@ -1,0 +1,52 @@
+<!-- Select cinema -->
+<div id="seleccion" class="container bg-transparent">
+  <h1>Cartelera</h1>
+  <div class="row">
+    <div class="col-3 p-3">
+      <select class="form-select" aria-label="Select cinema">
+        <option selected>Selecciona una provincia</option>
+        <option value="1">Santa Cruz de Tenerife</option>
+      </select>
+    </div>
+
+    <div class="col-3 p-3">
+      <select class="form-select" aria-label="Select cinema">
+        <option selected>Selecciona un cine</option>
+        <option value="1">Los Realejos</option>
+        <option value="2">Gran Sur</option>
+      </select>
+    </div>
+
+    <div class="col-3 p-3 form-group">
+      <input id="startDate" class="form-control" type="date" />
+    </div>
+
+    <div class="col-3 p-3">
+      <button type="button" class="btn btn-dark">Cartelera</button>
+    </div>
+  </div>
+</div>
+
+<!-- Peliculas -->
+
+<div class="container bg-transparent">
+  <div  class="card mb-3" *ngFor="let movie of moviesArray; index as i">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src={{movie.image}} class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{movie.name}}</h5>
+          <div class="module line-clamp">
+            <p class="card-text">{{movie.desc}}</p>
+          </div>
+          <div class="module line-clamp">
+            <p class="card-text" id="gender">Genero: {{movie.gender}}</p>
+          </div>
+          <button id="venta" type="button" class="btn btn-dark">Comprar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div >

@@ -1,0 +1,1 @@
+mongodb+srv://dbUser:cinemart@cluster0.ti4oec1.mongodb.net/?retryWrites=true&w=majority

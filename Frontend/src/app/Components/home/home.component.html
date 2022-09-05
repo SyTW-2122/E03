@@ -1,0 +1,17 @@
+<!-- ejemplos peliculas -->
+<div class="container bg-transparent">
+  <h1>Próximos Estrenos</h1>
+
+  <div class="card-group" >
+    <div class="card" *ngFor="let movie of moviesArray | slice:0:5; let i=index">
+      <img src="{{movie.image}}" class="card-img-top" alt="..." >
+      <div class="card-body">
+        <h5 class="card-title">{{movie.name}}</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container bg-transparent">
+  <a [routerLink]="['./../movies']">Para ver la cartelera<i class="pi pi-chevron-right"></i></a>
+</div>
