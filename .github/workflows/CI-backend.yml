@@ -5,9 +5,9 @@ name: Backend CI
 
 on: 
   push:
-    branches: [ "desarrollo" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "desarrollo" ]
+    branches: [ "main" ]
 
 jobs:
   backend-test:
