@@ -18,6 +18,9 @@
 <a href="https://github.com/SyTW-2122/E03/actions/workflows/CI-backend.yml">
     <img alt="BackendCI" src="https://github.com/SyTW-2122/E03/actions/workflows/CI-backend.yml/badge.svg">
 </a>
+<a href="https://github.com/SyTW-2122/E03/actions/workflows/sonarCloud.yml">
+    <img alt="Sonar-Cloud" src="https://github.com/SyTW-2122/E03/actions/workflows/sonarCloud.yml/badge.svg?branch=main">
+</a>
 <a href='https://coveralls.io/github/SyTW-2122/E03?branch=desarrollo'><img src='https://coveralls.io/repos/github/SyTW-2122/E03/badge.svg?branch=main' alt='Coverage Status' />
 </a>
 
