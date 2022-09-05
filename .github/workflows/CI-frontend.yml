@@ -5,9 +5,9 @@ name: Frontend CI
 
 on: 
   push:
-    branches: [ "desarrollo" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "desarrollo" ]
+    branches: [ "main" ]
 
 jobs:
   Front-test:
